@@ -6,14 +6,84 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		759BCF02307F51FE00444727 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCF01307F51FE00444727 /* Rule.swift */; };
+		759BCF04307F521500444727 /* RuleEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCF03307F521500444727 /* RuleEngine.swift */; };
+		759BCF06307F523A00444727 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCF05307F523A00444727 /* AppConfig.swift */; };
+		759BCF27307F558100444727 /* ConfigStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCF26307F558100444727 /* ConfigStore.swift */; };
+		759BCF29307F558F00444727 /* BrowserDiscovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCF28307F558F00444727 /* BrowserDiscovery.swift */; };
+		759BCF2B307F559E00444727 /* BrowserLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCF2A307F559E00444727 /* BrowserLauncher.swift */; };
+		759BCF2D307F55AB00444727 /* URLRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCF2C307F55AB00444727 /* URLRouter.swift */; };
+		759BCF2F307F55BA00444727 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCF2E307F55BA00444727 /* AppEnvironment.swift */; };
+		759BCF34307F5D7400444727 /* URLInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCF33307F5D7400444727 /* URLInput.swift */; };
+		759BCF36307F5D9300444727 /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCF35307F5D9300444727 /* HistoryStore.swift */; };
+		759BCF38307F5DA900444727 /* SystemDefaultMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCF37307F5DA900444727 /* SystemDefaultMonitor.swift */; };
+		759BCF3A307F5E9300444727 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCF39307F5E9300444727 /* MainView.swift */; };
+		759BCF3C307F5EA400444727 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCF3B307F5EA400444727 /* Components.swift */; };
+		759BCF3E307F5ED500444727 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCF3D307F5ED500444727 /* RulesView.swift */; };
+		759BCF40307F5F3400444727 /* RuleEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCF3F307F5F3400444727 /* RuleEditor.swift */; };
+		759BCF42307F5F4900444727 /* BrowsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCF41307F5F4900444727 /* BrowsersView.swift */; };
+		759BCF44307F5F5E00444727 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCF43307F5F5E00444727 /* HistoryView.swift */; };
+		759BCF46307F5F7100444727 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCF45307F5F7100444727 /* SettingsView.swift */; };
+		759BCF48307F5F8500444727 /* MenuBarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCF47307F5F8500444727 /* MenuBarContent.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		759BCF14307F532900444727 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 759BCEE8307F502400444727 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 759BCEEF307F502400444727;
+			remoteInfo = LinkRouter;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		759BCEF0307F502400444727 /* LinkRouter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinkRouter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		759BCF01307F51FE00444727 /* Rule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
+		759BCF03307F521500444727 /* RuleEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleEngine.swift; sourceTree = "<group>"; };
+		759BCF05307F523A00444727 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		759BCF10307F532900444727 /* LinkRouterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LinkRouterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		759BCF26307F558100444727 /* ConfigStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigStore.swift; sourceTree = "<group>"; };
+		759BCF28307F558F00444727 /* BrowserDiscovery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserDiscovery.swift; sourceTree = "<group>"; };
+		759BCF2A307F559E00444727 /* BrowserLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserLauncher.swift; sourceTree = "<group>"; };
+		759BCF2C307F55AB00444727 /* URLRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRouter.swift; sourceTree = "<group>"; };
+		759BCF2E307F55BA00444727 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		759BCF33307F5D7400444727 /* URLInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLInput.swift; sourceTree = "<group>"; };
+		759BCF35307F5D9300444727 /* HistoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStore.swift; sourceTree = "<group>"; };
+		759BCF37307F5DA900444727 /* SystemDefaultMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemDefaultMonitor.swift; sourceTree = "<group>"; };
+		759BCF39307F5E9300444727 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		759BCF3B307F5EA400444727 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		759BCF3D307F5ED500444727 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
+		759BCF3F307F5F3400444727 /* RuleEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleEditor.swift; sourceTree = "<group>"; };
+		759BCF41307F5F4900444727 /* BrowsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowsersView.swift; sourceTree = "<group>"; };
+		759BCF43307F5F5E00444727 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		759BCF45307F5F7100444727 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		759BCF47307F5F8500444727 /* MenuBarContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarContent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		759BCEFF307F508900444727 /* Exceptions for "LinkRouter" folder in "LinkRouter" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 759BCEEF307F502400444727 /* LinkRouter */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		759BCEF2307F502400444727 /* LinkRouter */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				759BCEFF307F508900444727 /* Exceptions for "LinkRouter" folder in "LinkRouter" target */,
+			);
 			path = LinkRouter;
+			sourceTree = "<group>";
+		};
+		759BCF11307F532900444727 /* LinkRouterTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = LinkRouterTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,13 +96,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		759BCF0D307F532900444727 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		759BCEE7307F502400444727 = {
 			isa = PBXGroup;
 			children = (
-				759BCEF2307F502400444727 /* LinkRouter */,
+				759BCF00307F51C700444727 /* Core */,
+				759BCF11307F532900444727 /* LinkRouterTests */,
 				759BCEF1307F502400444727 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,8 +119,52 @@
 			isa = PBXGroup;
 			children = (
 				759BCEF0307F502400444727 /* LinkRouter.app */,
+				759BCF10307F532900444727 /* LinkRouterTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		759BCF00307F51C700444727 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				759BCF32307F5BB400444727 /* UI */,
+				759BCF25307F556200444727 /* Services */,
+				759BCEF2307F502400444727 /* LinkRouter */,
+				759BCF01307F51FE00444727 /* Rule.swift */,
+				759BCF03307F521500444727 /* RuleEngine.swift */,
+				759BCF05307F523A00444727 /* AppConfig.swift */,
+				759BCF33307F5D7400444727 /* URLInput.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		759BCF25307F556200444727 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				759BCF26307F558100444727 /* ConfigStore.swift */,
+				759BCF28307F558F00444727 /* BrowserDiscovery.swift */,
+				759BCF2A307F559E00444727 /* BrowserLauncher.swift */,
+				759BCF2C307F55AB00444727 /* URLRouter.swift */,
+				759BCF2E307F55BA00444727 /* AppEnvironment.swift */,
+				759BCF35307F5D9300444727 /* HistoryStore.swift */,
+				759BCF37307F5DA900444727 /* SystemDefaultMonitor.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		759BCF32307F5BB400444727 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				759BCF39307F5E9300444727 /* MainView.swift */,
+				759BCF3B307F5EA400444727 /* Components.swift */,
+				759BCF3D307F5ED500444727 /* RulesView.swift */,
+				759BCF3F307F5F3400444727 /* RuleEditor.swift */,
+				759BCF41307F5F4900444727 /* BrowsersView.swift */,
+				759BCF43307F5F5E00444727 /* HistoryView.swift */,
+				759BCF45307F5F7100444727 /* SettingsView.swift */,
+				759BCF47307F5F8500444727 /* MenuBarContent.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -70,6 +192,29 @@
 			productReference = 759BCEF0307F502400444727 /* LinkRouter.app */;
 			productType = "com.apple.product-type.application";
 		};
+		759BCF0F307F532900444727 /* LinkRouterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 759BCF16307F532900444727 /* Build configuration list for PBXNativeTarget "LinkRouterTests" */;
+			buildPhases = (
+				759BCF0C307F532900444727 /* Sources */,
+				759BCF0D307F532900444727 /* Frameworks */,
+				759BCF0E307F532900444727 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				759BCF15307F532900444727 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				759BCF11307F532900444727 /* LinkRouterTests */,
+			);
+			name = LinkRouterTests;
+			packageProductDependencies = (
+			);
+			productName = LinkRouterTests;
+			productReference = 759BCF10307F532900444727 /* LinkRouterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -82,6 +227,10 @@
 				TargetAttributes = {
 					759BCEEF307F502400444727 = {
 						CreatedOnToolsVersion = 26.6;
+					};
+					759BCF0F307F532900444727 = {
+						CreatedOnToolsVersion = 26.6;
+						TestTargetID = 759BCEEF307F502400444727;
 					};
 				};
 			};
@@ -100,12 +249,20 @@
 			projectRoot = "";
 			targets = (
 				759BCEEF307F502400444727 /* LinkRouter */,
+				759BCF0F307F532900444727 /* LinkRouterTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		759BCEEE307F502400444727 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		759BCF0E307F532900444727 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -119,10 +276,44 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				759BCF3E307F5ED500444727 /* RulesView.swift in Sources */,
+				759BCF48307F5F8500444727 /* MenuBarContent.swift in Sources */,
+				759BCF3A307F5E9300444727 /* MainView.swift in Sources */,
+				759BCF29307F558F00444727 /* BrowserDiscovery.swift in Sources */,
+				759BCF46307F5F7100444727 /* SettingsView.swift in Sources */,
+				759BCF42307F5F4900444727 /* BrowsersView.swift in Sources */,
+				759BCF40307F5F3400444727 /* RuleEditor.swift in Sources */,
+				759BCF34307F5D7400444727 /* URLInput.swift in Sources */,
+				759BCF36307F5D9300444727 /* HistoryStore.swift in Sources */,
+				759BCF02307F51FE00444727 /* Rule.swift in Sources */,
+				759BCF3C307F5EA400444727 /* Components.swift in Sources */,
+				759BCF27307F558100444727 /* ConfigStore.swift in Sources */,
+				759BCF44307F5F5E00444727 /* HistoryView.swift in Sources */,
+				759BCF38307F5DA900444727 /* SystemDefaultMonitor.swift in Sources */,
+				759BCF2F307F55BA00444727 /* AppEnvironment.swift in Sources */,
+				759BCF06307F523A00444727 /* AppConfig.swift in Sources */,
+				759BCF2D307F55AB00444727 /* URLRouter.swift in Sources */,
+				759BCF2B307F559E00444727 /* BrowserLauncher.swift in Sources */,
+				759BCF04307F521500444727 /* RuleEngine.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		759BCF0C307F532900444727 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		759BCF15307F532900444727 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 759BCEEF307F502400444727 /* LinkRouter */;
+			targetProxy = 759BCF14307F532900444727 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		759BCEF9307F502700444727 /* Debug */ = {
@@ -254,16 +445,17 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4278H7BJ6Q;
-				ENABLE_APP_SANDBOX = YES;
+				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Core/LinkRouter/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sshtrfmv.LinkRouter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -286,16 +478,17 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4278H7BJ6Q;
-				ENABLE_APP_SANDBOX = YES;
+				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Core/LinkRouter/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sshtrfmv.LinkRouter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -306,6 +499,46 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		759BCF17307F532900444727 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4278H7BJ6Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sshtrfmv.LinkRouterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LinkRouter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LinkRouter";
+			};
+			name = Debug;
+		};
+		759BCF18307F532900444727 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4278H7BJ6Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sshtrfmv.LinkRouterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LinkRouter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LinkRouter";
 			};
 			name = Release;
 		};
@@ -326,6 +559,15 @@
 			buildConfigurations = (
 				759BCEFC307F502700444727 /* Debug */,
 				759BCEFD307F502700444727 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		759BCF16307F532900444727 /* Build configuration list for PBXNativeTarget "LinkRouterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				759BCF17307F532900444727 /* Debug */,
+				759BCF18307F532900444727 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
