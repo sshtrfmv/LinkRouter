@@ -10,3 +10,6 @@ xcuserdata/
 # Built application bundles
 *.app/
 *.dmg
+
+build/
+*.dmg
