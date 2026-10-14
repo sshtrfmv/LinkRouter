@@ -2,7 +2,7 @@ import Foundation
 
 /// Настройки поведения приложения.
 nonisolated struct AppSettings: Codable, Equatable, Sendable {
-    var showInDock = true
+    var hideDockWhenClosed = true
     var showMenuBarIcon = true
     var historyEnabled = true
     var historyLimit = 200
@@ -11,7 +11,7 @@ nonisolated struct AppSettings: Codable, Equatable, Sendable {
 
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
-        showInDock = try c.decodeIfPresent(Bool.self, forKey: .showInDock) ?? true
+        hideDockWhenClosed = try c.decodeIfPresent(Bool.self, forKey: .hideDockWhenClosed) ?? true
         showMenuBarIcon = try c.decodeIfPresent(Bool.self, forKey: .showMenuBarIcon) ?? true
         historyEnabled = try c.decodeIfPresent(Bool.self, forKey: .historyEnabled) ?? true
         historyLimit = try c.decodeIfPresent(Int.self, forKey: .historyLimit) ?? 200

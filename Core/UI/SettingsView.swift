@@ -20,9 +20,9 @@ struct SettingsView: View {
                 set: { store.setRulesPaused($0) })
     }
 
-    private var showInDockBinding: Binding<Bool> {
-        Binding(get: { store.config.settings.showInDock },
-                set: { newValue in store.updateSettings { $0.showInDock = newValue } })
+    private var hideDockBinding: Binding<Bool> {
+        Binding(get: { store.config.settings.hideDockWhenClosed },
+                set: { newValue in store.updateSettings { $0.hideDockWhenClosed = newValue } })
     }
 
     private var historyEnabledBinding: Binding<Bool> {
@@ -66,11 +66,10 @@ struct SettingsView: View {
             }
 
             Section("Отображение") {
-                Toggle("Показывать в Dock", isOn: showInDockBinding)
-                    .disabled(!showMenuBarIcon)
                 Toggle("Показывать в строке меню", isOn: $showMenuBarIcon)
-                    .disabled(!store.config.settings.showInDock)
-                Text("Хотя бы одно из двух должно быть включено, иначе до приложения не добраться.")
+                Toggle("Убирать из Dock, когда окно закрыто", isOn: hideDockBinding)
+                    .disabled(!showMenuBarIcon)
+                Text("Приложение продолжит работать в строке меню. Вернуть иконку в Dock можно пунктом «Открыть Link Router» в этом меню. Если значок в строке меню выключен, иконка остаётся в Dock.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
@@ -98,6 +97,9 @@ struct SettingsView: View {
         .formStyle(.grouped)
         .navigationTitle("Настройки")
         .onAppear(perform: refreshLoginState)
+        .onChange(of: showMenuBarIcon) { _, _ in
+            NotificationCenter.default.post(name: .activationPolicyNeedsUpdate, object: nil)
+        }
         .onChange(of: store.config.settings.historyLimit) { _, newValue in
             history.trim(to: newValue)
         }

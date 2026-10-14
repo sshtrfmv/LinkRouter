@@ -32,6 +32,7 @@ struct MenuBarContent: View {
 
     var body: some View {
         Button("Открыть Link Router") {
+            NSApp.setActivationPolicy(.regular)
             openWindow(id: "main")
             NSApp.activate()
         }
@@ -64,6 +65,7 @@ struct MenuBarContent: View {
         Divider()
 
         Button("Настройки…") {
+            NSApp.setActivationPolicy(.regular)
             NSApp.activate()
             openSettings()
         }
