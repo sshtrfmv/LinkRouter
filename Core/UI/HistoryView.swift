@@ -24,8 +24,8 @@ struct HistoryView: View {
                     Label("История пуста", systemImage: "clock")
                 } description: {
                     Text(store.config.settings.historyEnabled
-                         ? "Здесь появятся ссылки, которые обработало приложение."
-                         : "Запись истории выключена в настройках.")
+                         ? String(localized: "Здесь появятся ссылки, которые обработало приложение.")
+                         : String(localized: "Запись истории выключена в настройках."))
                 }
             } else if filteredEntries.isEmpty {
                 ContentUnavailableView.search(text: searchText)
@@ -87,9 +87,9 @@ struct HistoryView: View {
     private func subtitle(for entry: HistoryEntry) -> String {
         if let pattern = entry.rulePattern {
             return entry.usedFallback
-                ? "Правило «\(pattern)», браузер не найден → \(entry.browserName)"
-                : "Правило «\(pattern)» → \(entry.browserName)"
+                ? String(localized: "Правило «\(pattern)», браузер не найден → \(entry.browserName)")
+                : String(localized: "Правило «\(pattern)» → \(entry.browserName)")
         }
-        return "Без правила → \(entry.browserName)"
+        return String(localized: "Без правила → \(entry.browserName)")
     }
 }

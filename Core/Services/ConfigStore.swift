@@ -60,11 +60,11 @@ final class ConfigStore: ObservableObject {
     }
 
     func setRuleEnabled(id: UUID, _ enabled: Bool) {
-           guard let index = config.rules.firstIndex(where: { $0.id == id }),
-                 config.rules[index].isEnabled != enabled else { return }
-           config.rules[index].isEnabled = enabled
-           save()
-       }
+        guard let index = config.rules.firstIndex(where: { $0.id == id }),
+              config.rules[index].isEnabled != enabled else { return }
+        config.rules[index].isEnabled = enabled
+        save()
+    }
 
     /// Перестановка правил (для перетаскивания в списке).
     func moveRules(from source: IndexSet, to destination: Int) {
@@ -81,24 +81,24 @@ final class ConfigStore: ObservableObject {
     // MARK: - Остальные настройки
 
     func setDefaultBrowser(_ bundleID: String?) {
-            guard config.defaultBrowserBundleID != bundleID else { return }
-            config.defaultBrowserBundleID = bundleID
-            save()
-        }
+        guard config.defaultBrowserBundleID != bundleID else { return }
+        config.defaultBrowserBundleID = bundleID
+        save()
+    }
 
     func setRulesPaused(_ paused: Bool) {
-            guard config.rulesPaused != paused else { return }
-            config.rulesPaused = paused
-            save()
-        }
+        guard config.rulesPaused != paused else { return }
+        config.rulesPaused = paused
+        save()
+    }
 
     func updateSettings(_ change: (inout AppSettings) -> Void) {
-            var settings = config.settings
-            change(&settings)
-            guard settings != config.settings else { return }
-            config.settings = settings
-            save()
-        }
+        var settings = config.settings
+        change(&settings)
+        guard settings != config.settings else { return }
+        config.settings = settings
+        save()
+    }
 
     // MARK: - Диск
 
@@ -117,8 +117,8 @@ final class ConfigStore: ObservableObject {
             let backup = url.deletingLastPathComponent()
                 .appendingPathComponent("config.corrupt-\(stamp).json")
             try? FileManager.default.moveItem(at: url, to: backup)
-            return (AppConfig(),
-                    "Файл настроек повреждён. Он сохранён как \(backup.lastPathComponent), начата чистая конфигурация.")
+            let message = String(localized: "Файл настроек повреждён. Он сохранён как \(backup.lastPathComponent), начата чистая конфигурация.")
+            return (AppConfig(), message)
         }
     }
 
@@ -142,8 +142,8 @@ final class ConfigStore: ObservableObject {
             try data.write(to: fileURL, options: .atomic)
             saveError = nil
         } catch {
-            saveError = "Не удалось сохранить настройки: \(error.localizedDescription)"
-            logger.error("Ошибка сохранения конфигурации: \(error.localizedDescription, privacy: .public)")
+            saveError = String(localized: "Не удалось сохранить настройки: \(error.localizedDescription)")
+            logger.error("Failed to save configuration: \(error.localizedDescription, privacy: .public)")
         }
     }
 }

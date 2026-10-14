@@ -128,7 +128,7 @@ struct SettingsView: View {
             }
             loginMessage = nil
         } catch {
-            loginMessage = "Не удалось изменить автозапуск: \(error.localizedDescription). Попробуйте из приложения, лежащего в папке «Программы»."
+            loginMessage = String(localized: "Не удалось изменить автозапуск: \(error.localizedDescription). Попробуйте из приложения, лежащего в папке «Программы».")
         }
         refreshLoginState()
     }

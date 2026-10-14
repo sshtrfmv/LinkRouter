@@ -103,7 +103,7 @@ struct DefaultBrowserBanner: View {
         }
     }
 
-    private func banner(icon: String, color: Color, title: String, detail: String, showButton: Bool) -> some View {
+    private func banner(icon: String, color: Color, title: LocalizedStringKey, detail: LocalizedStringKey, showButton: Bool) -> some View {
         HStack(alignment: .top, spacing: 12) {
             Image(systemName: icon)
                 .font(.title2)

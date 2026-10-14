@@ -13,13 +13,13 @@ extension MatchType {
     var hint: String {
         switch self {
         case .exactDomain:
-            return "Только этот домен, без поддоменов: youtube.com не совпадёт с www.youtube.com."
+            return String(localized: "Только этот домен, без поддоменов: youtube.com не совпадёт с www.youtube.com.")
         case .domainWithSubdomains:
-            return "Сам домен и все его поддомены. Запись *.google.com тоже подойдёт."
+            return String(localized: "Сам домен и все его поддомены. Запись *.google.com тоже подойдёт.")
         case .urlMask:
-            return "Знак * заменяет любой текст. Если схема не указана, подходят http и https."
+            return String(localized: "Знак * заменяет любой текст. Если схема не указана, подходят http и https.")
         case .regex:
-            return "Регулярное выражение, которое ищется в любом месте ссылки. Регистр не важен."
+            return String(localized: "Регулярное выражение, которое ищется в любом месте ссылки. Регистр не важен.")
         }
     }
 }
@@ -98,7 +98,7 @@ struct RuleEditor: View {
                 Spacer()
                 Button("Отмена", role: .cancel) { dismiss() }
                     .keyboardShortcut(.cancelAction)
-                Button(isNew ? "Добавить" : "Сохранить", action: save)
+                Button(isNew ? String(localized: "Добавить") : String(localized: "Сохранить"), action: save)
                     .keyboardShortcut(.defaultAction)
                     .buttonStyle(.borderedProminent)
             }

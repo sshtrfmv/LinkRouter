@@ -26,7 +26,7 @@ final class SystemDefaultMonitor: ObservableObject {
                 try await NSWorkspace.shared.setDefaultApplication(at: Bundle.main.bundleURL,
                                                                    toOpenURLsWithScheme: scheme)
             } catch {
-                errorMessage = "Не удалось назначить автоматически. Сделайте это вручную: Системные настройки → Рабочий стол и Dock → Браузер по умолчанию."
+                errorMessage = String(localized: "Не удалось назначить автоматически. Сделайте это вручную: Системные настройки → Рабочий стол и Dock → Браузер по умолчанию.")
                 break
             }
         }

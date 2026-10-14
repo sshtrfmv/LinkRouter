@@ -57,7 +57,8 @@ struct MenuBarContent: View {
                 Text("Правил пока нет")
             }
             ForEach(store.config.rules) { rule in
-                let browserName = discovery.browser(withBundleID: rule.browserBundleID)?.name ?? "браузер не найден"
+                let browserName = discovery.browser(withBundleID: rule.browserBundleID)?.name
+                    ?? String(localized: "браузер не найден")
                 Toggle("\(rule.pattern) → \(browserName)", isOn: enabledBinding(for: rule))
             }
         }

@@ -7,10 +7,10 @@ enum SidebarItem: String, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .rules: return "Правила"
-        case .browsers: return "Браузеры"
-        case .history: return "История"
-        case .settings: return "Настройки"
+        case .rules: return String(localized: "Правила")
+        case .browsers: return String(localized: "Браузеры")
+        case .history: return String(localized: "История")
+        case .settings: return String(localized: "Настройки")
         }
     }
 

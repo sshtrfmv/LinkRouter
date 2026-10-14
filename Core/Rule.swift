@@ -11,10 +11,10 @@ nonisolated enum MatchType: String, Codable, CaseIterable, Identifiable, Sendabl
 
     var title: String {
         switch self {
-        case .urlMask: return "Маска URL"
-        case .exactDomain: return "Точный домен"
-        case .domainWithSubdomains: return "Домен с поддоменами"
-        case .regex: return "Регулярное выражение"
+        case .urlMask: return String(localized: "Маска URL")
+        case .exactDomain: return String(localized: "Точный домен")
+        case .domainWithSubdomains: return String(localized: "Домен с поддоменами")
+        case .regex: return String(localized: "Регулярное выражение")
         }
     }
 
@@ -40,15 +40,15 @@ nonisolated enum RuleValidationError: LocalizedError, Equatable, Sendable {
     var errorDescription: String? {
         switch self {
         case .emptyPattern:
-            return "Шаблон не может быть пустым."
+            return String(localized: "Шаблон не может быть пустым.")
         case .invalidDomain:
-            return "Некорректный домен. Пример: example.com"
+            return String(localized: "Некорректный домен. Пример: example.com")
         case .wildcardInExactDomain:
-            return "Знак * нельзя использовать в точном домене. Выберите «Домен с поддоменами»."
+            return String(localized: "Знак * нельзя использовать в точном домене. Выберите «Домен с поддоменами».")
         case .invalidRegex(let details):
-            return "Некорректное регулярное выражение: \(details)"
+            return String(localized: "Некорректное регулярное выражение: \(details)")
         case .missingBrowser:
-            return "Выберите браузер для правила."
+            return String(localized: "Выберите браузер для правила.")
         }
     }
 }

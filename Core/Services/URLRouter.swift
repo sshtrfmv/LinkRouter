@@ -37,8 +37,8 @@ final class URLRouter: ObservableObject {
     /// Вызывается, когда система передала нам ссылку.
     func handle(_ url: URL) async {
         guard RuleEngine.isWebURL(url) else {
-            lastError = "Ссылка не поддерживается (нужен http или https)."
-            logger.notice("Пропущен URL с неподдерживаемой схемой")
+            lastError = String(localized: "Ссылка не поддерживается (нужен http или https).")
+            logger.notice("Skipped URL with unsupported scheme")
             return
         }
 
@@ -47,8 +47,8 @@ final class URLRouter: ObservableObject {
         lastDecision = decision
 
         guard let browser = decision.browser else {
-            lastError = "Не найден ни один браузер для открытия ссылки."
-            logger.error("Нет доступных браузеров")
+            lastError = String(localized: "Не найден ни один браузер для открытия ссылки.")
+            logger.error("No browsers available")
             return
         }
 
@@ -56,7 +56,7 @@ final class URLRouter: ObservableObject {
             try await launcher.open(url, in: browser)
             lastError = nil
             let host = url.host(percentEncoded: false) ?? ""
-            logger.info("Открыто в \(browser.bundleID, privacy: .public), хост \(host, privacy: .private)")
+            logger.info("Opened in \(browser.bundleID, privacy: .public), host \(host, privacy: .private)")
 
             let settings = store.config.settings
             if settings.historyEnabled {
@@ -69,8 +69,8 @@ final class URLRouter: ObservableObject {
                             limit: settings.historyLimit)
             }
         } catch {
-            lastError = "Не удалось открыть ссылку в «\(browser.name)»: \(error.localizedDescription)"
-            logger.error("Ошибка запуска браузера \(browser.bundleID, privacy: .public): \(error.localizedDescription, privacy: .public)")
+            lastError = String(localized: "Не удалось открыть ссылку в «\(browser.name)»: \(error.localizedDescription)")
+            logger.error("Browser launch failed \(browser.bundleID, privacy: .public): \(error.localizedDescription, privacy: .public)")
         }
     }
 
@@ -78,9 +78,9 @@ final class URLRouter: ObservableObject {
     func decide(_ url: URL) -> RouteDecision {
         if store.config.rulesPaused {
             let fallback = fallbackBrowser()
-            let target = fallback?.name ?? "браузер не найден"
+            let target = fallback?.name ?? String(localized: "браузер не найден")
             return RouteDecision(url: url, rule: nil, browser: fallback, usedFallback: true,
-                                 explanation: "Правила приостановлены. Все ссылки открываются в: \(target).")
+                                 explanation: String(localized: "Правила приостановлены. Все ссылки открываются в: \(target)."))
         }
 
         let evaluation = engine.evaluate(url: url, rules: store.config.rules)
@@ -88,18 +88,18 @@ final class URLRouter: ObservableObject {
         if let rule = evaluation.winner {
             if let browser = discovery.browser(withBundleID: rule.browserBundleID) {
                 return RouteDecision(url: url, rule: rule, browser: browser, usedFallback: false,
-                                     explanation: "Сработало правило «\(rule.pattern)» → \(browser.name).")
+                                     explanation: String(localized: "Сработало правило «\(rule.pattern)» → \(browser.name)."))
             }
             let fallback = fallbackBrowser()
-            let target = fallback?.name ?? "браузер не найден"
+            let target = fallback?.name ?? String(localized: "браузер не найден")
             return RouteDecision(url: url, rule: rule, browser: fallback, usedFallback: true,
-                                 explanation: "Браузер из правила «\(rule.pattern)» не установлен. Запасной вариант: \(target).")
+                                 explanation: String(localized: "Браузер из правила «\(rule.pattern)» не установлен. Запасной вариант: \(target)."))
         }
 
         let fallback = fallbackBrowser()
-        let target = fallback?.name ?? "браузер не найден"
+        let target = fallback?.name ?? String(localized: "браузер не найден")
         return RouteDecision(url: url, rule: nil, browser: fallback, usedFallback: true,
-                             explanation: "Подходящих правил нет. Браузер по умолчанию: \(target).")
+                             explanation: String(localized: "Подходящих правил нет. Браузер по умолчанию: \(target)."))
     }
 
     /// Порядок: выбранный в приложении → Safari → первый найденный.

@@ -99,15 +99,16 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let config = env.store.config
         let menu = NSMenu()
 
-        menu.addItem(item("Открыть Link Router", #selector(showMainWindow)))
+        menu.addItem(item(String(localized: "Открыть Link Router"), #selector(showMainWindow)))
         menu.addItem(.separator())
 
-        menu.addItem(item(config.rulesPaused ? "Возобновить правила" : "Приостановить правила",
+        menu.addItem(item(config.rulesPaused ? String(localized: "Возобновить правила")
+                                              : String(localized: "Приостановить правила"),
                           #selector(togglePause)))
 
         // Браузер по умолчанию
         let browserMenu = NSMenu()
-        let auto = item("Автоматически", #selector(selectDefaultBrowser(_:)), represented: "")
+        let auto = item(String(localized: "Автоматически"), #selector(selectDefaultBrowser(_:)), represented: "")
         auto.state = config.defaultBrowserBundleID == nil ? .on : .off
         browserMenu.addItem(auto)
         if !env.discovery.browsers.isEmpty { browserMenu.addItem(.separator()) }
@@ -116,24 +117,25 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             entry.state = config.defaultBrowserBundleID == browser.bundleID ? .on : .off
             browserMenu.addItem(entry)
         }
-        let browserParent = NSMenuItem(title: "Браузер по умолчанию", action: nil, keyEquivalent: "")
+        let browserParent = NSMenuItem(title: String(localized: "Браузер по умолчанию"), action: nil, keyEquivalent: "")
         browserParent.submenu = browserMenu
         menu.addItem(browserParent)
 
         // Правила
         let rulesMenu = NSMenu()
         if config.rules.isEmpty {
-            let empty = NSMenuItem(title: "Правил пока нет", action: nil, keyEquivalent: "")
+            let empty = NSMenuItem(title: String(localized: "Правил пока нет"), action: nil, keyEquivalent: "")
             empty.isEnabled = false
             rulesMenu.addItem(empty)
         }
         for rule in config.rules {
-            let browserName = env.discovery.browser(withBundleID: rule.browserBundleID)?.name ?? "браузер не найден"
+            let browserName = env.discovery.browser(withBundleID: rule.browserBundleID)?.name
+                ?? String(localized: "браузер не найден")
             let entry = item("\(rule.pattern) → \(browserName)", #selector(toggleRule(_:)), represented: rule.id)
             entry.state = rule.isEnabled ? .on : .off
             rulesMenu.addItem(entry)
         }
-        let rulesParent = NSMenuItem(title: "Правила", action: nil, keyEquivalent: "")
+        let rulesParent = NSMenuItem(title: String(localized: "Правила"), action: nil, keyEquivalent: "")
         rulesParent.submenu = rulesMenu
         menu.addItem(rulesParent)
 
