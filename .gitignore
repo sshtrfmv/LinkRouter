@@ -13,3 +13,8 @@ xcuserdata/
 
 build/
 *.dmg
+
+build/
+*.dmg
+.DS_Store
+xcuserdata/
