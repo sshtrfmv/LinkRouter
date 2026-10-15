@@ -26,6 +26,7 @@
 		759BCF44307F5F5E00444727 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCF43307F5F5E00444727 /* HistoryView.swift */; };
 		759BCF46307F5F7100444727 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCF45307F5F7100444727 /* SettingsView.swift */; };
 		759BCF48307F5F8500444727 /* MenuBarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCF47307F5F8500444727 /* MenuBarContent.swift */; };
+		75ABA0AF3080B0140045E649 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ABA0AE3080B0140045E649 /* LanguageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		759BCF43307F5F5E00444727 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		759BCF45307F5F7100444727 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		759BCF47307F5F8500444727 /* MenuBarContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarContent.swift; sourceTree = "<group>"; };
+		75ABA0AE3080B0140045E649 /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -79,11 +81,6 @@
 				759BCEFF307F508900444727 /* Exceptions for "LinkRouter" folder in "LinkRouter" target */,
 			);
 			path = LinkRouter;
-			sourceTree = "<group>";
-		};
-		759BCF11307F532900444727 /* LinkRouterTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = LinkRouterTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -110,7 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				759BCF00307F51C700444727 /* Core */,
-				759BCF11307F532900444727 /* LinkRouterTests */,
 				759BCEF1307F502400444727 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -148,6 +144,7 @@
 				759BCF2E307F55BA00444727 /* AppEnvironment.swift */,
 				759BCF35307F5D9300444727 /* HistoryStore.swift */,
 				759BCF37307F5DA900444727 /* SystemDefaultMonitor.swift */,
+				75ABA0AE3080B0140045E649 /* LanguageManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -204,9 +201,6 @@
 			);
 			dependencies = (
 				759BCF15307F532900444727 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				759BCF11307F532900444727 /* LinkRouterTests */,
 			);
 			name = LinkRouterTests;
 			packageProductDependencies = (
@@ -284,6 +278,7 @@
 				759BCF46307F5F7100444727 /* SettingsView.swift in Sources */,
 				759BCF42307F5F4900444727 /* BrowsersView.swift in Sources */,
 				759BCF40307F5F3400444727 /* RuleEditor.swift in Sources */,
+				75ABA0AF3080B0140045E649 /* LanguageManager.swift in Sources */,
 				759BCF34307F5D7400444727 /* URLInput.swift in Sources */,
 				759BCF36307F5D9300444727 /* HistoryStore.swift in Sources */,
 				759BCF02307F51FE00444727 /* Rule.swift in Sources */,
