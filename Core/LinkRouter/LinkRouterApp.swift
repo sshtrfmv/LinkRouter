@@ -13,6 +13,8 @@ struct LinkRouterApp: App {
                 .withAppEnvironment(env)
         }
         .defaultSize(width: 900, height: 620)
+        // Окно не должно открываться от входящих ссылок: приложение обрабатывает их скрытно.
+        .handlesExternalEvents(matching: [])
 
         MenuBarExtra(isInserted: $showMenuBarIcon) {
             MenuBarContent()
@@ -25,7 +27,7 @@ struct LinkRouterApp: App {
         Settings {
             SettingsView()
                 .withAppEnvironment(env)
-                .frame(width: 520, height: 600)
+                .frame(width: 520, height: 680)
         }
     }
 }

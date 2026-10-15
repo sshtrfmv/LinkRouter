@@ -13,7 +13,25 @@ struct SettingsView: View {
     @State private var loginMessage: String?
     @State private var confirmClear = false
 
+    /// Язык изменили, но приложение ещё не перезапущено.
+    private var needsRestart: Bool {
+        store.config.settings.language != AppEnvironment.shared.launchLanguage
+    }
+
     // MARK: - Привязки
+
+    private var languageBinding: Binding<AppLanguage> {
+        Binding(get: { store.config.settings.language },
+                set: { newValue in
+                    store.updateSettings { $0.language = newValue }
+                    LanguageManager.apply(newValue)
+                })
+    }
+
+    private var appearanceBinding: Binding<AppearanceMode> {
+        Binding(get: { store.config.settings.appearance },
+                set: { newValue in store.updateSettings { $0.appearance = newValue } })
+    }
 
     private var pausedBinding: Binding<Bool> {
         Binding(get: { store.config.rulesPaused },
@@ -44,6 +62,37 @@ struct SettingsView: View {
 
     var body: some View {
         Form {
+            Section("Язык") {
+                Picker("Язык интерфейса", selection: languageBinding) {
+                    ForEach(AppLanguage.allCases) { language in
+                        Text(language.title).tag(language)
+                    }
+                }
+                if needsRestart {
+                    HStack {
+                        Text("Перезапустите приложение, чтобы применить язык.")
+                            .foregroundStyle(.orange)
+                        Spacer()
+                        Button("Перезапустить") {
+                            LanguageManager.relaunch()
+                        }
+                    }
+                } else {
+                    Text("Язык применяется после перезапуска приложения.")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+            }
+
+            Section("Оформление") {
+                Picker("Тема", selection: appearanceBinding) {
+                    ForEach(AppearanceMode.allCases) { mode in
+                        Text(mode.title).tag(mode)
+                    }
+                }
+                .pickerStyle(.segmented)
+            }
+
             Section("Правила") {
                 Toggle("Приостановить все правила", isOn: pausedBinding)
                 Text("Пока включена пауза, все ссылки открываются в браузере по умолчанию.")

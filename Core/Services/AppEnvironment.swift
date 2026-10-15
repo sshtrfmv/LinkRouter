@@ -8,6 +8,8 @@ final class AppEnvironment {
     let discovery: BrowserDiscovery
     let history: HistoryStore
     let router: URLRouter
+    /// Язык, выбранный на момент запуска. Если в настройках он другой, нужен перезапуск.
+    let launchLanguage: AppLanguage
 
     private init() {
         let store = ConfigStore()
@@ -16,6 +18,7 @@ final class AppEnvironment {
         self.store = store
         self.discovery = discovery
         self.history = history
+        self.launchLanguage = store.config.settings.language
         self.router = URLRouter(store: store,
                                 discovery: discovery,
                                 history: history,

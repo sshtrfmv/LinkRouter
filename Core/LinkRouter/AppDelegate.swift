@@ -9,6 +9,8 @@ extension Notification.Name {
 @MainActor
 final class AppDelegate: NSObject, NSApplicationDelegate {
     private var cancellables = Set<AnyCancellable>()
+    private let launchDate = Date()
+    private var lastLinkEvent = Date.distantPast
 
     // MARK: - Запуск
 
@@ -23,8 +25,21 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             .sink { paused in NSApp.dockTile.badgeLabel = paused ? "⏸" : nil }
             .store(in: &cancellables)
 
-        // Изменили настройку «Убирать из Dock». dropFirst: на старте ничего не пересчитываем,
-        // пока окно ещё не появилось. Task откладывает пересчёт: $config публикует значение до записи.
+        // Тема оформления. Значение приходит из подписки, поэтому читать store.config здесь нельзя.
+        store.$config
+            .map(\.settings.appearance)
+            .removeDuplicates()
+            .sink { mode in
+                switch mode {
+                case .system: NSApp.appearance = nil
+                case .light: NSApp.appearance = NSAppearance(named: .aqua)
+                case .dark: NSApp.appearance = NSAppearance(named: .darkAqua)
+                }
+            }
+            .store(in: &cancellables)
+
+        // Изменили настройку «Убирать из Dock». dropFirst: на старте ничего не пересчитываем.
+        // Task откладывает пересчёт: $config публикует значение до записи.
         store.$config
             .map(\.settings.hideDockWhenClosed)
             .removeDuplicates()
@@ -34,10 +49,16 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             }
             .store(in: &cancellables)
 
-        // Окно стало главным: показываем иконку в Dock.
+        // Окно стало главным.
         center.publisher(for: NSWindow.didBecomeMainNotification)
-            .sink { [weak self] _ in
-                Task { self?.updateActivationPolicy() }
+            .sink { [weak self] note in
+                guard let self else { return }
+                // Окно появилось сразу после ссылки: это побочный эффект, закрываем его.
+                if Date().timeIntervalSince(self.lastLinkEvent) < 2,
+                   let window = note.object as? NSWindow {
+                    window.close()
+                }
+                Task { self.updateActivationPolicy() }
             }
             .store(in: &cancellables)
 
@@ -64,7 +85,18 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         false
     }
 
+    // MARK: - Входящие ссылки
+
     func application(_ application: NSApplication, open urls: [URL]) {
+        lastLinkEvent = Date()
+
+        // Приложение запущено самой ссылкой: окно не нужно, работаем скрытно.
+        if Date().timeIntervalSince(launchDate) < 5 {
+            for window in NSApp.windows where window.isVisible && window.canBecomeMain {
+                window.close()
+            }
+        }
+
         for url in urls {
             Task { await AppEnvironment.shared.router.handle(url) }
         }
@@ -153,7 +185,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc private func showMainWindow() {
         NSApp.activate()
-        if let window = NSApp.windows.first(where: { $0.title == "Link Router" }) {
+        if let window = NSApp.windows.first(where: { $0.canBecomeMain }) {
             window.makeKeyAndOrderFront(nil)
         }
     }

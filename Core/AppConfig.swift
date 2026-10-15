@@ -1,11 +1,44 @@
 import Foundation
 
+/// Тема оформления.
+nonisolated enum AppearanceMode: String, Codable, CaseIterable, Identifiable, Sendable {
+    case system, light, dark
+
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .system: return String(localized: "Как в системе")
+        case .light: return String(localized: "Светлая")
+        case .dark: return String(localized: "Тёмная")
+        }
+    }
+}
+
+/// Язык интерфейса.
+nonisolated enum AppLanguage: String, Codable, CaseIterable, Identifiable, Sendable {
+    case system, ru, en
+
+    var id: String { rawValue }
+
+    /// Названия языков не переводятся: каждый пишется на своём языке.
+    var title: String {
+        switch self {
+        case .system: return String(localized: "Как в системе")
+        case .ru: return "Русский"
+        case .en: return "English"
+        }
+    }
+}
+
 /// Настройки поведения приложения.
 nonisolated struct AppSettings: Codable, Equatable, Sendable {
     var hideDockWhenClosed = true
     var showMenuBarIcon = true
     var historyEnabled = true
     var historyLimit = 200
+    var appearance: AppearanceMode = .system
+    var language: AppLanguage = .system
 
     init() {}
 
@@ -15,6 +48,8 @@ nonisolated struct AppSettings: Codable, Equatable, Sendable {
         showMenuBarIcon = try c.decodeIfPresent(Bool.self, forKey: .showMenuBarIcon) ?? true
         historyEnabled = try c.decodeIfPresent(Bool.self, forKey: .historyEnabled) ?? true
         historyLimit = try c.decodeIfPresent(Int.self, forKey: .historyLimit) ?? 200
+        appearance = (try? c.decodeIfPresent(AppearanceMode.self, forKey: .appearance)) ?? .system
+        language = (try? c.decodeIfPresent(AppLanguage.self, forKey: .language)) ?? .system
     }
 }
 
