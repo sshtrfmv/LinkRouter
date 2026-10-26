@@ -1,43 +1,52 @@
 # LinkRouter
 
-**A native macOS app for routing URLs to different browsers using customizable rules.**
+Native macOS app that opens links in different browsers according to your rules.
 
-LinkRouter helps you decide which browser should open a URL, based on rules you define.
+## Install
 
-## Features
+The current source targets macOS 14.6 or later.
 
-- **Custom URL routing** — direct links to different browsers based on configurable rules.
-- **Native macOS app** — built specifically for macOS.
-- **Rule-based behavior** — customize how URLs are handled to fit your workflow.
+```sh
+brew tap sshtrfmv/tap
+brew install --cask linkrouter
+```
 
-## Download
+Or download `LinkRouter.dmg` from [Releases](https://github.com/sshtrfmv/LinkRouter/releases), then drag the app into Applications.
+The app is not notarized: on first launch, macOS may require approval in System Settings → Privacy & Security.
 
-Get the latest version from the [GitHub Releases](https://github.com/sshtrfmv/LinkRouter/releases) page.
+Set LinkRouter as your default browser in its settings, then choose a fallback browser and add rules.
+Only links passed to the system default browser are routed; links navigating inside a browser are unaffected.
 
-## Getting Started
+## Rules
 
-1. Download the latest available release.
-2. Follow the installation instructions provided with the release.
-3. Configure your URL routing rules.
-4. Open links and let LinkRouter route them according to your configuration.
+| Type | Example | Matches |
+| --- | --- | --- |
+| Exact domain | `example.com` | The domain itself |
+| Domain with subdomains | `*.example.com` | Base domain and its subdomains |
+| URL mask | `example.com/work/*` | Links under the work path |
+| Regular expression | `^https://example[.]com/` | URLs matching the expression |
+
+Higher priority wins. At equal priority: URL mask, exact domain, domain with subdomains, then regex.
+Ties use the order in the list. Disabled rules are skipped.
+If no rule matches or its browser is unavailable, the fallback browser is used.
+
+## Privacy
+
+History can be disabled or cleared in Settings. It stores the visited domain, time, selected browser,
+fallback status, and matching rule pattern. A rule pattern can itself contain a path or query;
+full visited URLs are not stored in history.
 
 ## Development
 
-The project is built with Xcode.
+Open `LinkRouter.xcodeproj` in a current Xcode with Swift 6.2 or later.
+CI builds the app without signing and checks the routing engine.
 
-To explore the source code, clone the repository:
-
-```bash
-git clone https://github.com/sshtrfmv/LinkRouter.git
-cd LinkRouter
+```sh
+swiftc Core/Rule.swift Core/RuleEngine.swift Tests/RuleChecks.swift -o /tmp/linkrouter-rule-checks
+/tmp/linkrouter-rule-checks
+xcodebuild -project LinkRouter.xcodeproj -target LinkRouter -configuration Release CODE_SIGNING_ALLOWED=NO build
 ```
-
-Open `LinkRouter.xcodeproj` in Xcode to inspect, build, and run the project.
-
-## Contributing
-
-Suggestions, bug reports, and contributions are welcome. Feel free to open an issue or submit a pull request.
 
 ## License
 
-See the [LICENSE](LICENSE) file for licensing information.
+MIT; see [LICENSE](LICENSE).

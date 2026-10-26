@@ -7,14 +7,6 @@ build/
 *.xcuserstate
 xcuserdata/
 
-# Built application bundles
+# Distribution
 *.app/
 *.dmg
-
-build/
-*.dmg
-
-build/
-*.dmg
-.DS_Store
-xcuserdata/
