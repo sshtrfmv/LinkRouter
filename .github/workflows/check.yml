@@ -1,0 +1,18 @@
+name: Check
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test routing rules
+        run: |
+          swiftc Core/Rule.swift Core/RuleEngine.swift Tests/RuleChecks.swift -o "$RUNNER_TEMP/rule-checks"
+          "$RUNNER_TEMP/rule-checks"
+      - name: Build application
+        run: xcodebuild -project LinkRouter.xcodeproj -target LinkRouter -configuration Release CODE_SIGNING_ALLOWED=NO build
